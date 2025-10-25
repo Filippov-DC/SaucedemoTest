@@ -17,13 +17,16 @@ public abstract class BaseTest {
     public void setUp() {
         if (driver == null) {
             System.setProperty("webdriver.edge.driver", "C:\\Users\\danya\\Desktop\\msedgedriver\\msedgedriver.exe");
+            
             EdgeOptions options = new EdgeOptions();
             options.addArguments("--start-maximized");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
+            
             EdgeDriverService service = new EdgeDriverService.Builder()
                     .usingDriverExecutable(new File("C:\\Users\\danya\\Desktop\\msedgedriver\\msedgedriver.exe"))
                     .build();
+            
             driver = new EdgeDriver(service, options);
             driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
         }
